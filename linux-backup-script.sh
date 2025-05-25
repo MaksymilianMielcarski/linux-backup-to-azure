@@ -12,7 +12,7 @@ echo "Crating backupfile..."
 tar -czf "$BACKUP_PATH" "$SOURCE_DIR"
 
 echo "Copying backup to Azure..."
-azcopy copy "$BACKUP_PATH" "https://$STORAGE_ACCOUNT_NAME.blob.core.windows.net>
+azcopy copy "$BACKUP_PATH" "https://$STORAGE_ACCOUNT_NAME.blob.core.windows.net/$CONTAINER_NAME/$BACKUP_NAME$STORAGE_SAS_TOKEN" --overwrite=true
 
 echo "Deleting local backup file"
 rm "$BACKUP_PATH"
